@@ -1,0 +1,94 @@
+     3 way to insert :
+     m.insert(pair<char,int>('x',7));
+     m.insert(make_pair('x',7));
+     m.insert({'x',7});
+     
+     
+     for(; itr!=m.end(); itr++){  // iterator are pointer
+         cout<<itr->first<<" "<<itr->second<<el;
+     }
+     
+     
+     map<char,int>m{{'a',50},{'c',20},{'b',10}};
+     m.insert({'a',15});
+     auto it = m.begin();  // it on the beigning
+
+     it = m.insert(it,{'x',30});  // insert {'x',30}
+     m.insert(it,{'h',5});       // insert {'x',30}
+     map<char,int>m2;           // new map
+     m2.insert(m.begin(),m.find('b '));  // insert until find 'b'
+
+     for(auto mm:m2){   // foreach
+         cout<<mm.first<<" "<<mm.second<<el;
+     }
+     
+     ---------------------------------------
+     function emplace don't need to tell it is pait 
+     by default it know it pair
+     
+       function emplace       vs   emplace_hint
+       dosen't take iterator       take iterator
+       
+       
+       -------------------------------------------------
+       
+       function erase 
+       3 ways to erase  first  :
+       m.erase('b');
+//1
+       erase 'b' so this second way
+       auto it = m.begin();
+       it++;
+       m.erase(it);*/
+//2
+      erase specific range
+      auto it = m.begin();
+      it++;
+      m.erase(it,m.end());
+//3
+     auto it = m.begin();
+     it++;
+     m.erase(it,m.find('w'));  // function find 
+     
+     -------------------------------------------------------
+     function equal_range   
+     map<char,int>m{{'a',10},{'b',20},{'c',30},{'d',5}};
+     //pair<map<char,int>::iterator,map<char,int>::iterator>;
+
+     auto it = m.equal_range('c');
+     cout<<it.first->first<<" "<<it.first->second;
+     cout<<it.second->first<<" "<<it.second->second;
+     
+     output :: c 30 
+               d 5
+    -------------------------------------------------------------------------'
+
+    Iterator from type key_compare
+    map<char,int>m;
+     m['a'] = 70;
+     m['b'] = 20;
+     m['c'] = 30;
+     m['d'] = 54;
+     m['f'] = 89;
+     m['g'] = 60;
+     m['j'] = 72;
+     map<char,int>::key_compare com = m.key_comp();    // 
+     auto it = m.begin();
+     char c = 'g';					// compere c vs it->first     
+     for(; com(it->first,c); it++)		        // stop until find 'g'
+         cout<<it->first<<" "<<it->second<<el;
+   -------------------------------------------------------------------------'
+   map<char,int>m;
+     m['a'] = 70;				       //	output : 			
+     m['b'] = 20;				      //	f 89							
+     m['c'] = 30;                                     //        g 60
+     m['d'] = 54;                                     //	j 72 	
+     m['f'] = 89;
+     m['g'] = 60; 
+     m['j'] = 72;
+     auto l = m.lower_bound('a');
+     auto u = m.upper_bound('d');
+     m.erase(l,u);
+     for(auto it  :m)
+         cout<<it.first<<" "<<it.second<<el;
+        
