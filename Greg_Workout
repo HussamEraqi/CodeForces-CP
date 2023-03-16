@@ -1,0 +1,46 @@
+ #include<iostream>
+ #include<bits/stdc++.h>
+ #define T     int T; cin>>T; while(T--)
+ #define ll    long long
+ //#define l    endl
+ #define pi    3.141592653
+ #define el   "\n"
+ #define SIZE 26
+ using namespace std;
+ void HOOS(){
+     ios_base::sync_with_stdio(false);
+     ios::sync_with_stdio(0);
+     cin.tie(0);
+     cout.tie(0);
+ }
+ /*void I_O(){
+    #ifndef ONLINE_JUDGE
+         freopen("Input.txt", "r", stdin);
+         freopen("output.txt", "w", stdout);
+         freopen("errors.txt", "w", stderr);
+    #endif
+ }*/
+ int freq[1001] = {0};
+ int main() {
+     HOOS();
+     int chest =0,biceps=0,back=0;
+     int n; cin>>n;
+     vector<int>v(n);
+     for(int i=0; i<n; i++){
+         cin>>v[i];
+     }
+     for(int i=0; i<n; i++){
+         if(i%3==0)
+             chest+=v[i];
+         else if(i % 3 == 1)
+             biceps +=v[i];
+         else
+             back +=v[i];
+     }
+     if(chest > biceps && chest > back)
+         cout<<"chest";
+     else if(biceps > chest && biceps > back)
+         cout<<"biceps";
+     else
+         cout<<"back";
+ }
