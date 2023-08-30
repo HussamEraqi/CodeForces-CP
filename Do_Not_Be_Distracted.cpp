@@ -2,7 +2,7 @@
 #include<bits/stdc++.h>
 int main() {
      HOOS();
-     /*int t; cin>>t;
+     int t; cin>>t;
      while(t--){
          int n; cin>>n;
          string s; cin>>s;
